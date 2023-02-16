@@ -5,5 +5,7 @@ node server.js
 # Run Angular Front
 ng serve --port 8081
 
-# Plus
-Create a database name : testdb in Mysql
+## Data Base Config
+- Path : /api/config/db.config.js
+- Server : Mysql
+- Database name : testdb 
