@@ -1,0 +1,23 @@
+<div class="list row">
+    <div class="col-md-6">
+      <h4>Liste d'Utilisateur</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item user-item"
+          *ngFor="let utilisateur of utilisateurs; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveUtilisateur(utilisateur, i)"
+        >
+          {{ utilisateur.name }}
+        </li>
+      </ul>
+  
+    </div>
+
+    <div class="col-md-6">
+        <app-utilisateur-details
+          [viewMode]="true"
+          [currentUtilisateur]="currentUtilisateur"
+        ></app-utilisateur-details>
+      </div>
+  </div>

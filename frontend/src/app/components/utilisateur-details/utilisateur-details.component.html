@@ -1,0 +1,97 @@
+<div *ngIf="viewMode; else editable">
+    <div *ngIf="currentUtilisateur.id">
+      <h4>Utilisateur</h4>
+      <div>
+        <label><strong>Nom:</strong></label> {{ currentUtilisateur.name }}
+      </div>
+      <div>
+        <label><strong>Prénom:</strong></label>
+        {{ currentUtilisateur.firstname }}
+      </div>
+
+      <div>
+        <label><strong>Username</strong></label>
+        {{ currentUtilisateur.username }}
+      </div>
+  
+      <a
+        class="badge badge-warning"
+        routerLink="/utilisateurs/{{ currentUtilisateur.id }}"
+      >
+        Edit
+      </a>
+    </div>
+  
+    <div *ngIf="!currentUtilisateur">
+      <br />
+      <p>Utilisateur...</p>
+    </div>
+  </div>
+  
+  <ng-template #editable>
+    <div *ngIf="currentUtilisateur.id" class="edit-form">
+      <h4>Utilisateur</h4>
+      <form>
+        <div class="form-group">
+          <label for="title">Nom</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            [(ngModel)]="currentUtilisateur.name"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="firstname">Prénom</label>
+          <input
+            type="text"
+            class="form-control"
+            id="firstname"
+            [(ngModel)]="currentUtilisateur.firstname"
+            name="firstname"
+          />
+        </div>
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              [(ngModel)]="currentUtilisateur.username"
+              name="username"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Mote de passe</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              [(ngModel)]="currentUtilisateur.password"
+              name="password"
+            />
+          </div>
+  
+      </form>
+      <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
+        Supprimer
+      </button>
+
+        <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="updateTutorial()"
+        >
+        Modifier
+        </button>
+      <p>{{ message }}</p>
+    </div>
+  
+    <div *ngIf="!currentUtilisateur.id">
+      <br />
+      <p>Utilisateur non trouvé</p>
+    </div>
+  </ng-template>
